@@ -1,41 +1,47 @@
 import streamlit as st
 import folium
-import geopandas as gpd
+import json
 from streamlit_folium import st_folium
+
 def clustering_map():
 
     try:
-        gdf = gpd.read_file("C:\\Users\\Hype AMD\\STREAMLITE\\stunting_geo.geojson")
-        gdf = gdf.to_crs(4326)
+        # Load geojson (gunakan relative path, bukan C:/ )
+        with open("stunting_geo.geojson", "r", encoding="utf-8") as f:
+            gdf = json.load(f)
 
-        center_lat = gdf.geometry.centroid.y.mean()
-        center_lon = gdf.geometry.centroid.x.mean()
+        # Ambil koordinat untuk center map
+        coords = []
+        for feature in gdf["features"]:
+            geom = feature["geometry"]
+            if geom["type"] == "Polygon":
+                coords += geom["coordinates"][0]
+            elif geom["type"] == "MultiPolygon":
+                for poly in geom["coordinates"]:
+                    coords += poly[0]
 
+        # Hitung rata-rata koordinat
+        center_lat = sum([c[1] for c in coords]) / len(coords)
+        center_lon = sum([c[0] for c in coords]) / len(coords)
+
+        # Warna cluster
         cluster_colors = {
             0: "#ff7f0e",
             1: "#1f77b4",
         }
 
+        # Create map
         m = folium.Map(
             location=[center_lat, center_lon],
             zoom_start=7.3,
-            tiles=None,      # Remove basemap
-            zoom_control=False,
-            scrollWheelZoom=False,
-            dragging=False
+            tiles="cartodbpositron"
         )
 
-        # Boundary aesthetic
-        folium.GeoJson(
-            gdf.boundary,
-            style_function=lambda x: {"color": "#eeeeee", "weight": 1.1}
-        ).add_to(m)
-
-        # Cluster polygons
+        # Tambahkan polygon dengan warna cluster
         folium.GeoJson(
             gdf,
             style_function=lambda feature: {
-                "fillColor": cluster_colors.get(feature["properties"]["cluster"]),
+                "fillColor": cluster_colors.get(feature["properties"]["cluster"], "#cccccc"),
                 "color": "white",
                 "weight": 1.2,
                 "fillOpacity": 0.9,
@@ -46,15 +52,6 @@ def clustering_map():
                 localize=True
             )
         ).add_to(m)
-
-        # 🧼 Force transparent background (fix!)
-        m.get_root().html.add_child(folium.Element("""
-        <style>
-        .leaflet-container {
-            background: transparent !important;
-        }
-        </style>
-        """))
 
         st_folium(m, width=520, height=430)
 
