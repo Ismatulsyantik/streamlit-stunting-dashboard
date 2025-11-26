@@ -6,7 +6,7 @@ genai.configure(api_key="GOOGLE_API_KEY")
 model = genai.GenerativeModel("gemini-1.5-flash")
 def generate_chat_answer(df: pd.DataFrame, user_message: str) -> str:
     # Dataframe -> text
-    data_text = df.head(30).to_string(index=False)
+    data_text = df.head(50).to_string(index=False)
 
     prompt = f"""
 {CHATBOT_SYSTEM}
@@ -20,5 +20,5 @@ PERTANYAAN USER:
 JAWABAN:
     """
 
-    response = model.generate_content(prompt)
+    response = model.generate_content([prompt])
     return response.text
