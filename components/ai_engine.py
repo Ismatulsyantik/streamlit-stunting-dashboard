@@ -1,5 +1,6 @@
 import google.generativeai as genai
 import pandas as pd
+import streamlit as st 
 from .ai_prompt import CHATBOT_SYSTEM
 
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
