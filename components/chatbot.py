@@ -31,4 +31,4 @@ def chatbot_ui(df):
         st.session_state.chat_history.append(("user", user_input))
         answer = generate_chat_answer(df, user_input)
         st.session_state.chat_history.append(("assistant", answer))
-        st.experimental_rerun()
+        st.rerun()
