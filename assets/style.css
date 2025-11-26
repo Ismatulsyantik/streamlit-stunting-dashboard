@@ -1,0 +1,100 @@
+
+
+/* ===== BASE LAYOUT ===== */
+.main {
+    background-color: #f5f6fa;
+    padding: 20px;
+}
+
+/* ===== GLOBAL PADDING ===== */
+main, .main {
+    padding: 4px !important;       /* lebih rapat dari 10–20px */
+}
+
+/* ===== RAPATKAN ANTAR CONTAINER ===== */
+.block-card {
+    margin-bottom: 4px !important; 
+    padding: 6px !important;
+}
+
+/* ===== KURANGI SPACING ANTAR TEKS / TITLE ===== */
+h1, h2, h3, h4, h5 {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+p {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+/* ===== KURANGI SPASI ANTAR KOLOM ===== */
+div[data-testid="column"] {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+}
+
+/* ===== HAPUS JARAK BESAR DI ATAS HALAMAN ===== */
+.block-container {
+    padding-top: 10px !important;
+}
+/* ===== CARD STYLE ===== */
+.block-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+
+/* =====================
+   WHATSAPP CHAT UI STYLE
+   ===================== */
+
+/* Container keseluruhan */
+.chat-wrapper {
+    background: #e5ddd5;        /* warna WhatsApp */
+    padding: 15px;
+    border-radius: 12px;
+    height: 380px;
+    overflow-y: auto;
+}
+
+/* =====================
+   SIMPLE CHAT UI (NO COLOR)
+   ===================== */
+
+/* Container chat */
+.chat-wrapper {
+    background: #f7f7f7;
+    padding: 15px;
+    border-radius: 12px;
+    height: 380px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Bubble general */
+.chat-bubble {
+    padding: 10px 14px;
+    border-radius: 10px;
+    max-width: 75%;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+/* User message — rata kanan */
+.user-bubble {
+    align-self: flex-end;
+    background: #eeeeee;
+    border: 1px solid #dddddd;
+}
+
+/* Bot message — rata kiri */
+.bot-bubble {
+    align-self: flex-start;
+    background: white;
+    border: 1px solid #e0e0e0;
+}
