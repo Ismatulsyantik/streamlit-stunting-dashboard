@@ -1,3 +1,8 @@
+import os
+import streamlit as st
+
+# === CEK APA API KEY KEBACA ===
+st.write("🔑 API Key Loaded:", bool(os.getenv("GOOGLE_API_KEY")))
 import streamlit as st
 from components.kpi_cards import kpi_cards
 from components.trend import trend_chart 
