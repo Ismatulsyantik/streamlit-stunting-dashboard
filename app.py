@@ -63,7 +63,7 @@ with st.container():
             "<h3 style='text-align: center; font-weight: 600;'>Trend Stunting & IPM 2019–2024</h3>",
             unsafe_allow_html=True
         )
-        fig_trend = trend_chart("C:/Users/Hype AMD/STREAMLITE/Ipm_Stunting.csv")
+        fig_trend = trend_chart("Ipm_Stunting.csv")
         st.plotly_chart(fig_trend, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -113,8 +113,8 @@ with st.container():
 # ======================
 #    RADAR + SCATTER
 # ======================
-df_radar = pd.read_csv("C:\\Users\\Hype AMD\\STREAMLITE\\data_radar.csv", index_col=0)
-df_plot = pd.read_csv("C:\\Users\\Hype AMD\\STREAMLITE\\plot_cluster.csv")
+df_radar = pd.read_csv("data_radar.csv", index_col=0)
+df_plot = pd.read_csv("plot_cluster.csv")
 
 with st.container():
     col1, col2 = st.columns([1, 1], gap = "small")
@@ -138,7 +138,7 @@ with st.container():
         st.plotly_chart(fig, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-df_cluster = pd.read_csv("C:\\Users\\Hype AMD\\STREAMLITE\\hasil_cluster.csv", index_col=0)
+df_cluster = pd.read_csv("hasil_cluster.csv", index_col=0)
 with st.container():
    col3, col4 = st.columns([1,1], gap = "small")
    with col3 :
