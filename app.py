@@ -60,7 +60,7 @@ with st.container():
     with col_left:
         st.markdown("<div class='block-card'>", unsafe_allow_html=True)
         st.markdown(
-            "<h3 style='text-align: center; font-weight: 600;'>Trend Stunting & IPM 2019–2024</h3>",
+            "<h3 style='text-align: center; font-weight: 600;'>Trend Stunting & IPM 2020–2024</h3>",
             unsafe_allow_html=True
         )
         fig_trend = trend_chart("Ipm_Stunting.csv")
