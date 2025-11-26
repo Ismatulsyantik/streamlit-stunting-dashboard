@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+plotly
+folium
+branca
+scikit-learn
+google-generativeai
+python-dotenv
