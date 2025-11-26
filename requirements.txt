@@ -3,6 +3,11 @@ pandas
 numpy
 plotly
 folium
+geopandas
+shapely
+fiona
+pyproj
+rtree
 branca
 scikit-learn
 google-generativeai
