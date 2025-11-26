@@ -3,6 +3,7 @@ pandas
 numpy
 plotly
 folium
+streamlit-folium
 geopandas
 shapely
 fiona
